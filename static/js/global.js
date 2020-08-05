@@ -1,7 +1,3 @@
-/* 
-    hide_show
-*/
-
 var hide_show = function(){
     if (menu.style.display=='block') {
         // hide
@@ -19,19 +15,7 @@ var hide_show = function(){
 var menu = document.getElementById('menu');
 var main = document.getElementById('main');
 var badge = document.getElementById('badge');
-
 badge.addEventListener("click", hide_show);
-
-
-
-// var cols = document.getElementsByClassName("column-container");
-//        for(var i = 0; i < cols.length; i++)
-  //              cols[i].style.display='block';
-
-
-
-    
-
 
 function setCookie(cname, cvalue, exdays)
 {
