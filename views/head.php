@@ -10,9 +10,9 @@ require_once($config_dir."url.php");
 // require_once($config_dir."request.php");
 
 // config
-$home = 'VIS 217, C-i-r-c-u-l-a-t-i-o-n';
 $site = 'C-i-r-c-u-l-a-t-i-o-n';
-$head = 'Class Schedule';
+$home = 'VIS 217, C-i-r-c-u-l-a-t-i-o-n';
+$head = 'Fall 2020';
 
 $db = db_connect("guest");
 $oo = new Objects();
