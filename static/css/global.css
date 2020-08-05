@@ -69,23 +69,31 @@ ul:first-child {
 	padding-left: 0px;
 }
 
-#clock-canvas,
-#skull {
+#menu {
+    display: none;
+}
+
+#main {
+    display: block;
+}
+
+#badge {
+    display: block;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-
-#skull-container {
+#badge-container {
 	position: fixed;
 	right: 0px;
 	width: 100%;
-/* 
+    /* background-color:#FF0; */
+    /* 
 	height: 100%;
 	width: 100%;
- */
+    */
 }
 
-#skull-container.lower-right {
+#badge-container.lower-right {
 	bottom: 0px;
 	width: initial;
 }
@@ -151,13 +159,18 @@ ul:first-child {
 	-ms-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
+
 .hidden {
-	display: none;
+	/*
+    display: none;
 	visibility: hidden;
+    */
 }
 
 .visible {
+    /*
 	visibility: visible;
+    */
 }
 
 .column-container-container:last-child > .column-container {
@@ -237,7 +250,7 @@ img.small {
 	animation-duration: 2s;
 	*/
 }
-#skull.fade {
+#badge.fade {
 	position: absolute;
 }
 

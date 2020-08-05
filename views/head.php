@@ -7,42 +7,30 @@ require_once($config);
 // specific to this 'app'
 $config_dir = $root."/config/";
 require_once($config_dir."url.php");
-require_once($config_dir."request.php");
+// require_once($config_dir."request.php");
+
+// config
+$home = 'VIS 217, C-i-r-c-u-l-a-t-i-o-n';
+$site = 'C-i-r-c-u-l-a-t-i-o-n';
+$head = 'Class Schedule';
 
 $db = db_connect("guest");
-
 $oo = new Objects();
 $mm = new Media();
 $ww = new Wires();
 $uu = new URL();
 // $rr = new Request();
 
-// self
 if($uu->id)
 	$item = $oo->get($uu->id);
 else
 	$item = $oo->get(0);
 $name = ltrim(strip_tags($item["name1"]), ".");
-
-// document title
-$item = $oo->get($uu->id);
-$title = $item["name1"];
-$db_name = "Hamlet";
-if ($title)
-	$title = $db_name ." | ". $title;
-else
-	$title = $db_name;
-
 $nav = $oo->nav($uu->ids);
-
-
-
 $show_menu = false;
-if($uu->id)
-{
+if($uu->id) {
 	$is_leaf = empty($oo->children_ids($uu->id));
-	$internal = (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);
-	
+	$internal = (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
 	if(!$is_leaf && $internal)
 		$show_menu = true;
 }
@@ -50,7 +38,7 @@ if($uu->id)
 ?><!DOCTYPE html>
 <html>
 	<head>
-		<title><? echo $title; ?></title>
+		<title><? echo $site; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="/static/css/global.css">
@@ -61,23 +49,23 @@ if($uu->id)
 		<div id="page"><?
 			if(!$uu->id)
 			{
-			?><header id="header" class="hidden homepage"><?
+			?><header id="menu" class="hidden homepage"><?
 			}
 			else if($show_menu)
 			{
-			?><header id="header" class="visible"><?
+			?><header id="menu" class="visible"><?
 			}
 			else
 			{
-			?><header id="header" class="hidden"><?
+			?><header id="menu" class="hidden"><?
 			}
 				?><ul>
 					<li><?
 						if($uu->id)
 						{
-							?><a href="<? echo $host; ?>">Hamlet, Prince of Denmark.</a><?
+							?><a href="<? echo $host; ?>"><?= $head; ?></a><?
 						}
-						else { ?>Hamlet, Prince of Denmark.<? }
+						else { echo $head; }
 					?></li>
 					<ul class="nav-level"><?
 				$prevd = $nav[0]['depth'];

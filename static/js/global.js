@@ -1,56 +1,36 @@
-// var isHidden;
-var scrollPos = 0;
+/* 
+    hide_show
+*/
 
-function showHide()
-{
-	var cols = document.getElementsByClassName("column-container");
-	var body = document.getElementById("body");
-	var header = document.getElementById("header");
-	var skull = document.getElementById("skull");
-	var ex = document.getElementById("ex");
-	if(isHidden)
-	{
-		scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
-		// show the menu
-		for(var i = 0; i < cols.length; i++)
-			cols[i].className = cols[i].className.replace( /(?:^|\s)hidden(?!\S)/g , ' visible' );
-		header.className = header.className.replace( /(?:^|\s)hidden(?!\S)/g , ' visible' );
-		body.className = body.className.replace( /(?:^|\s)visible(?!\S)/g , ' hidden' );
-		skull.className = skull.className.replace( /(?:^|\s)visible(?!\S)/g , ' hidden' );
-		ex.className = ex.className.replace( /(?:^|\s)hidden(?!\S)/g , ' visible' );
-		window.scrollTo(0, 0);
-		
-	}
-	else
-	{
-		// hide the menu
-		for(var i = 0; i < cols.length; i++)
-			cols[i].className = cols[i].className.replace( /(?:^|\s)visible(?!\S)/g , ' hidden' );
-		header.className = header.className.replace( /(?:^|\s)visible(?!\S)/g , ' hidden' );
-		body.className = body.className.replace( /(?:^|\s)hidden(?!\S)/g , ' visible' );
-		skull.className = skull.className.replace( /(?:^|\s)hidden(?!\S)/g , ' visible' );
-		ex.className = ex.className.replace( /(?:^|\s)visible(?!\S)/g , ' hidden' );
-		window.scrollTo(0, scrollPos);
-	}
-	
-	isHidden = !isHidden;
+var hide_show = function(){
+    if (menu.style.display=='block') {
+        // hide
+        menu.style.display='none';
+        main.style.display='block';
+        badge.style.opacity='1.0';
+    } else {
+        // show
+        menu.style.display='block';
+        main.style.display='none';
+        badge.style.opacity='0.25';
+    }
 }
 
-// WHY DOESN'T THIS WORK? 
-// http://stackoverflow.com/questions/17885855/use-dynamic-variable-string-as-regex-pattern-in-javascript
-function switchClasses(c1, c2)
-{
-	arr = document.getElementsByClassName(c1);
-	for(var i = 0; i < arr.length; i++)
-	{
-		// arr[i].className = arr[i].className.replace( /(?:^|\s)c1(?!\S)/g
-		var regex = new RegExp("(?:^|\s)" + c1 + "(?!\S)", "g");
-		arr[i].className = arr[i].className.replace(regex, " " + c2);
-	}
-}
+var menu = document.getElementById('menu');
+var main = document.getElementById('main');
+var badge = document.getElementById('badge');
+
+badge.addEventListener("click", hide_show);
 
 
-// document.getElementById("ex-container").addEventListener("click", showHide);
+
+// var cols = document.getElementsByClassName("column-container");
+//        for(var i = 0; i < cols.length; i++)
+  //              cols[i].style.display='block';
+
+
+
+    
 
 
 function setCookie(cname, cvalue, exdays)
