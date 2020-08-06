@@ -1,5 +1,4 @@
-<script src='static/js/badge.js'></script><?
-
+<?
 /*
     edit $badge per site
     plus .js src above
@@ -28,8 +27,8 @@ if(!$uu->id) {
     	</div><?
 	}
 }
-?>
 
-<script type='text/javascript' src='/static/js/global.js'></script>
+?><script type='text/javascript' src='/static/js/global.js'></script>
 <script type='text/javascript' src='/static/js/menu.js'></script>
+<script src='static/js/badge.js'></script>
 <script>badge_init();</script>
