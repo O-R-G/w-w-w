@@ -1,5 +1,5 @@
 <?
-// path to config file
+//path to config file
 $config = $_SERVER["DOCUMENT_ROOT"];
 $config = $config."/open-records-generator/config/config.php";
 require_once($config);
