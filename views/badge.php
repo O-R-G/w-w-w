@@ -5,10 +5,10 @@
     plus .js src above
 */
 
-$badge = "<canvas>loading...</canvas>";
+$badge = "<canvas class='centre'>loading...</canvas>";
 
 if(!$uu->id) {
-    ?><div id='badge-container' class='v-centre'>
+    ?><div id='badge-container' class='centre'>
     	<div id='badge' class='large badge'>
             <?= $badge; ?>
         </div>
@@ -32,4 +32,4 @@ if(!$uu->id) {
 
 <script type='text/javascript' src='/static/js/global.js'></script>
 <script type='text/javascript' src='/static/js/menu.js'></script>
-<script>init_badge(1);</script>
+<script>badge_init();</script>
