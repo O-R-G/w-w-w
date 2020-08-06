@@ -70,15 +70,13 @@ ul:first-child {
 }
 
 #menu {
-    display: none;
+	padding-bottom: 20px;
 }
 
 #main {
-    display: block;
 }
 
 #badge {
-    display: block;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -86,7 +84,7 @@ ul:first-child {
 	position: fixed;
 	right: 0px;
 	width: 100%;
-    /* background-color:#FF0; */
+    background-color:#FF0;
     /* 
 	height: 100%;
 	width: 100%;
@@ -96,6 +94,14 @@ ul:first-child {
 #badge-container.lower-right {
 	bottom: 0px;
 	width: initial;
+}
+
+#badge-canvas {
+}
+
+#breadcrumbs {
+	padding: 20px;
+	padding-bottom: 0px;
 }
 
 .column-container-container {
@@ -108,15 +114,6 @@ ul:first-child {
 	vertical-align: top;
 	width: 33vw;
 	padding: 20px;
-}
-
-#breadcrumbs {
-	padding: 20px;
-	padding-bottom: 0px;
-}
-
-#menu {
-	padding-bottom: 20px;
 }
 
 #fullscreen:-webkit-full-screen,
@@ -161,16 +158,13 @@ ul:first-child {
 }
 
 .hidden {
-	/*
     display: none;
-	visibility: hidden;
-    */
+    /* visibility: hidden; */
 }
 
 .visible {
-    /*
-	visibility: visible;
-    */
+    display: block;
+    /* visibility: visible; */
 }
 
 .column-container-container:last-child > .column-container {
@@ -218,12 +212,11 @@ ul:first-child {
 	}
 }
 
-img.large,
-object.large {
+div.large, img.large {
 	height: 80vh;
 }
 
-img.small {
+div.small, img.small {
 	width: 33vw;
 }
 

@@ -1,32 +1,11 @@
-var hide_show = function(){
-    if (menu.style.display=='block') {
-        // hide
-        menu.style.display='none';
-        main.style.display='block';
-        badge.style.opacity='1.0';
-    } else {
-        // show
-        menu.style.display='block';
-        main.style.display='none';
-        badge.style.opacity='0.25';
-    }
-}
-
-var menu = document.getElementById('menu');
-var main = document.getElementById('main');
-var badge = document.getElementById('badge');
-badge.addEventListener("click", hide_show);
-
-function setCookie(cname, cvalue, exdays)
-{
+function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
-function expireCookie(name)
-{
+function expireCookie(name) {
 	if (getCookie(name) != "")
 	{
 		document.cookie = name+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
@@ -36,8 +15,7 @@ function expireCookie(name)
 		return false;
 }
 
-function getCookie(name)
-{
+function getCookie(name) {
 	var cname = name + "=";
 	var ca = document.cookie.split(';');
 	for(var i = 0; i < ca.length; i++)
@@ -51,8 +29,7 @@ function getCookie(name)
 	return "";
 }
 
-function checkCookie(name)
-{
+function checkCookie(name) {
 	if (getCookie(name) != "")
 		return true;
 	else

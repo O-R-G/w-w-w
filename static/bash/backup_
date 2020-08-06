@@ -1,0 +1,13 @@
+#!/bin/sh
+
+DATE=`date +%Y-%m-%d`
+DIR="~/backup/"
+SQL="$DIR/$DATE.sql"
+USER="username"
+PASS="password"
+DB_HOST="database host"
+DB_NAME="database name"
+
+echo "\n$DATE"
+mysqldump -u $USER -p$PASS -h $DB_HOST $DB_NAME > $SQL
+rsync -azP /var/www/html/media/ $DIR/media

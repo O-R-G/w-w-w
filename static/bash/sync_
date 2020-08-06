@@ -1,0 +1,18 @@
+#!/bin/sh
+
+DATE=`date +%Y-%m-%d`
+DIR="/Library/Webserver/Documents/site"
+SQL="$DIR/$DATE.sql"
+USER="username"
+PASS="password"
+DB_HOST="database host"
+DB_NAME="database name"
+DB_HOST_LOCAL="database host local"
+DB_NAME_LOCAL="database name local"
+WWW_HOST=$DB_HOST
+
+echo "\n$DATE"
+mysqldump -u $USER -p$PASS -h $DB_HOST $DB_NAME > $SQL
+mysql -r root -p $DB_NAME_LOCAL < $SQL
+rsync -azP $USER@$WWW_HOST:/var/www/html/media/ $DIR/media
+rm $SQL
