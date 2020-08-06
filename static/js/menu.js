@@ -13,8 +13,10 @@ function hide_show_menu() {
 
 // stub
 
+/*
 function badge_start_stop() {
     // check if badge is started, then start or stop
     console.log('badge stopped');
     console.log('badge started');
 }
+*/

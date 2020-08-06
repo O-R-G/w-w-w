@@ -7,7 +7,6 @@ require_once($config);
 // specific to this 'app'
 $config_dir = $root."/config/";
 require_once($config_dir."url.php");
-// require_once($config_dir."request.php");
 
 // config
 $site = 'C-i-r-c-u-l-a-t-i-o-n';
@@ -19,7 +18,6 @@ $oo = new Objects();
 $mm = new Media();
 $ww = new Wires();
 $uu = new URL();
-// $rr = new Request();
 
 if($uu->id)
 	$item = $oo->get($uu->id);
@@ -45,56 +43,50 @@ if($uu->id) {
 		<link rel="stylesheet" href="/static/css/sf-text.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
-	<body>
-		<div id="page"><?
-			if(!$uu->id)
-			{
-			?><header id="menu" class="hidden homepage"><?
-			}
-			else if($show_menu)
-			{
-			?><header id="menu" class="visible"><?
-			}
-			else
-			{
-			?><header id="menu" class="hidden"><?
-			}
-				?><ul>
-					<li><?
-						if($uu->id)
-						{
-							?><a href="<? echo $host; ?>"><?= $head; ?></a><?
-						}
-						else { echo $head; }
-					?></li>
-					<ul class="nav-level"><?
-				$prevd = $nav[0]['depth'];
-				foreach($nav as $n)
-				{
-					$d = $n['depth'];
-					if($d > $prevd)
-					{
-					?><ul class="nav-level"><?
-					}
-					else
-					{
-						for($i = 0; $i < $prevd - $d; $i++)
-						{ ?></ul><? }
-					}
-					?><li><?
-						if($n['o']['id'] != $uu->id)
-						{
-						?><a href="<? echo $host.$n['url']; ?>"><?
-							echo htmlentities($n['o']['name1']);
-						?></a><?
-						}
-						else
-						{
-						?><span><? echo htmlentities($n['o']['name1']); ?></span><?
-						}
-					?></li><?
-					$prevd = $d;
-				}
-				?></ul>
-				</ul>
-			</header>
+	<body><?
+
+	    if(!$uu->id) {
+    	    ?><header id="menu" class="hidden homepage"><?
+	    }
+	    else if($show_menu) {
+    	    ?><header id="menu" class="visible"><?
+	    }
+	    else {
+    	    ?><header id="menu" class="hidden"><?
+	    }
+	    ?><ul>
+		    <li><?
+			    if($uu->id) {
+				    ?><a href="<? echo $host; ?>"><?= $head; ?></a><?
+			    }
+			    else { 
+                    echo $head; 
+                }
+		    ?></li>
+		    <ul class="nav-level"><?
+	    $prevd = $nav[0]['depth'];
+	    foreach($nav as $n) {
+		    $d = $n['depth'];
+		    if($d > $prevd) {
+    		    ?><ul class="nav-level"><?
+		    }
+		    else {
+			    for($i = 0; $i < $prevd - $d; $i++) { 
+                    ?></ul><? 
+                }
+		    }
+		    ?><li><?
+			    if($n['o']['id'] != $uu->id) {
+    			    ?><a href="<? echo $host.$n['url']; ?>"><?
+				    echo htmlentities($n['o']['name1']);
+	    		    ?></a><?
+			    }
+			    else {
+    			    ?><span><? echo htmlentities($n['o']['name1']); ?></span><?
+			    }
+		    ?></li><?
+		    $prevd = $d;
+	    }
+	    ?></ul>
+	    </ul>
+    </header>
