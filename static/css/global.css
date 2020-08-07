@@ -26,6 +26,8 @@ p {
 
 img {
 	width: 100%;
+	padding: 1em;
+  	filter: grayscale(100%);
 }
 
 canvas {
@@ -118,6 +120,7 @@ ul:first-child {
   height:100%;
   object-fit:contain;
   background-color: black;
+  filter: initial;
 }
 
 #fullscreen:-ms-fullscreen,
@@ -125,6 +128,7 @@ ul:first-child {
 	width: auto;
 	height: auto;
 	margin: auto;
+  	filter: initial;
 }
 
 /* classes */
@@ -148,6 +152,7 @@ ul:first-child {
 
 .column {
     flex: 50%;
+    padding:1em;
 }
 
 .red {

@@ -11,7 +11,7 @@ require_once($config_dir."url.php");
 // config
 $site = 'C-i-r-c-u-l-a-t-i-o-n';
 $home = 'VIS 217, C-i-r-c-u-l-a-t-i-o-n';
-$head = 'Fall 2020';
+$head = 'VIS 217';
 
 $db = db_connect("guest");
 $oo = new Objects();
