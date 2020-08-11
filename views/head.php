@@ -79,6 +79,7 @@ if($uu->id) {
 			    if($n['o']['id'] != $uu->id) {
     			    ?><a href="<? echo $host.$n['url']; ?>"><?
 				    echo htmlentities($n['o']['name1']);
+				    echo ' : ' . htmlentities($n['o']['deck']);
 	    		    ?></a><?
 			    }
 			    else {
