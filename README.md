@@ -1,5 +1,7 @@
-# W-W-W
-Version 1.0.0
-O-R-G inc.  
+# w-w-w
 
-A basic web template derived from o-r-g.com. 
+Version 1.0.0
+
+O-R-G inc. 
+
+A basic web template in html/php/js derived from o-r-g.com. 
