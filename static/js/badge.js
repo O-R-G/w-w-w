@@ -44,7 +44,7 @@ function badge_init() {
 
     context.fillStyle = "#FFFFFF";
     context.lineWidth = 8;
-    context.strokeStyle = '#F00';
+    context.strokeStyle = '#00F';
     counter = 0;
     radius = canvas.width / 2.25;
     // frames = 60;
