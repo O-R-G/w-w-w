@@ -3,16 +3,22 @@
 DATE=`date +%Y-%m-%d`
 DIR="/Library/Webserver/Documents/site"
 SQL="$DIR/$DATE.sql"
-USER="username"
-PASS="password"
-DB_HOST="database host"
-DB_NAME="database name"
-DB_HOST_LOCAL="database host local"
-DB_NAME_LOCAL="database name local"
-WWW_HOST=$DB_HOST
+LOG="$DIR/static/bash/log"
+DB_USER="username"
+DB_PASS="password"
+DB_HOST="example.com"
+DB_NAME="databasename"
+DB_USER_LOCAL="username"
+DB_PASS_LOCAL="password"
+DB_HOST_LOCAL="localhost"
+DB_NAME_LOCAL="databasename_local"
+WWW_USER="username"
+WWW_HOST="example.com"
 
-echo "\n$DATE"
-mysqldump -u $USER -p$PASS -h $DB_HOST $DB_NAME > $SQL
-mysql -r root -p $DB_NAME_LOCAL < $SQL
-rsync -azP $USER@$WWW_HOST:/var/www/html/media/ $DIR/media
+echo "\nStart mysql ..."
+echo "\n$DATE" >>$LOG
+mysqldump -u $DB_USER -p$DB_PASS -h $DB_HOST $DB_NAME > $SQL 2>>$LOG
+mysql -u $DB_USER_LOCAL -p$DB_PASS_LOCAL $DB_NAME_LOCAL < $SQL 2>>$LOG
+echo "\nStart rsync ..."
+rsync -azP $WWW_USER@$WWW_HOST:/var/www/html/media/ $DIR/media 2>>$LOG
 rm $SQL
