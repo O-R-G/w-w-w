@@ -18,5 +18,7 @@
 # macos
 .DS_Store
 
-# bash log
+# bash 
+backup_
+sync_
 log
