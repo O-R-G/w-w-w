@@ -2,5 +2,16 @@
 .htaccess
 .htpasswd 
 
-# emacs backups
+# nano, emacs backups
 *~
+
+# media
+*.gif
+*.jpg
+*.jpeg
+*.png
+*.pdf
+*.tif
+*.tiff
+
+
