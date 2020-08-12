@@ -5,5 +5,5 @@
 
 $head = 'Hello';
 $site = 'w-w-w-orld.';
-$home = $head , ', ' . $site;
+$home = $head . ", " . $site;
 ?>
