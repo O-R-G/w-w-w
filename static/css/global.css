@@ -121,6 +121,7 @@ blockquote {
     columns: 100px 2;
     column-gap: 2em;
     margin-top: 2em;
+    margin-bottom: 50%;
 }
 
 #fullscreen:-webkit-full-screen,
