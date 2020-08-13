@@ -106,6 +106,12 @@ ul:first-child {
     padding: 1em;
 }
 
+#columns {
+    columns: 200px 2;
+    column-gap: 2em;
+    padding: 1em;
+}
+
 #fullscreen:-webkit-full-screen,
 #f:-webkit-full-screen,
 :-webkit-full-screen {
@@ -144,15 +150,6 @@ ul:first-child {
     /* height based on width */
 	width: 33vw;
 	height: 33vw;
-}
-
-.row {
-    display: flex;
-}
-
-.column {
-    flex: 50%;
-    padding:1em;
 }
 
 .red {
@@ -201,10 +198,4 @@ ul:first-child {
 
 /* vertical iPhone */
 @media screen and (max-width: 500px) {
-    .row {
-        flex-wrap: wrap;
-    }
-    .column {
-        flex: 100%;
-    }
 }
