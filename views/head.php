@@ -34,6 +34,7 @@ if($uu->id) {
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="/static/css/global.css">
 		<link rel="stylesheet" href="/static/css/sf-text.css">
+		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
 	<body><?

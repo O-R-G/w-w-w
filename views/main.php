@@ -20,6 +20,9 @@ $notes = $item['notes'];
     <div id='content'>
         <div id='columns'><?
             echo $body; 
+            <div id='notes'><?
+                echo $notes; 
+            ?></div>
         ?></div>
     </div>
 </section>

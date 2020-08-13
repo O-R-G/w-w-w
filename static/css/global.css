@@ -112,6 +112,11 @@ ul:first-child {
     padding: 1em;
 }
 
+#notes {
+    columns: 100px 2;
+    padding: 1em;
+}
+
 #fullscreen:-webkit-full-screen,
 #f:-webkit-full-screen,
 :-webkit-full-screen {
@@ -139,6 +144,10 @@ ul:first-child {
 
 /* classes */
 
+.mono {
+    font-family: sf-text, Helvetica, Arial, sans-serif;
+}
+
 .large {
     /* vw = viewport width % */
     /* height based on width */
@@ -150,11 +159,6 @@ ul:first-child {
     /* height based on width */
 	width: 33vw;
 	height: 33vw;
-}
-
-.red {
-	stroke: red;
-	fill: red;
 }
 
 .centre {
