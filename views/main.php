@@ -20,7 +20,7 @@ $notes = $item['notes'];
     <div id='content'>
         <div id='columns'><?
             echo $body; 
-            ?><div id='notes'><?
+            ?><div id='notes' class='mono'><?
                 echo $notes; 
             ?></div>
         </div>
