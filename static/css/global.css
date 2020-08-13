@@ -70,7 +70,6 @@ ul:first-child {
 blockquote {
     font-family: sf-mono, monaco, courier, monospace;
     font-size: 14px;
-    line-height: 22px;
 }
 
 /* ids */
@@ -120,7 +119,8 @@ blockquote {
 
 #notes {
     columns: 100px 2;
-    padding: 1em;
+    column-gap: 2em;
+    margin-top: 2em;
 }
 
 #fullscreen:-webkit-full-screen,
@@ -152,6 +152,7 @@ blockquote {
 
 .mono {
     font-family: sf-mono, monaco, courier, monospace;
+    font-size: 14px;
 }
 
 .large {
