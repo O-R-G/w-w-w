@@ -69,7 +69,7 @@ ul:first-child {
 
 blockquote {
     font-family: sf-mono, monaco, courier, monospace;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 /* ids */
@@ -152,7 +152,7 @@ blockquote {
 
 .mono {
     font-family: sf-mono, monaco, courier, monospace;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .large {
