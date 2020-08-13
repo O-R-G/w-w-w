@@ -34,13 +34,6 @@ canvas {
     /* border: 5px solid red; */
 }
 
-/* ids */
-
-#fullscreen {
-	/* width: auto; */
-	height: auto;
-}
-
 a:link,
 a:visited {
     color: #00F;
@@ -72,6 +65,17 @@ ul {
 
 ul:first-child {
 	padding-left: 0px;
+}
+
+blockquote {
+    font-family: sf-mono, monaco, courier, monospace;
+}
+
+/* ids */
+
+#fullscreen {
+	/* width: auto; */
+	height: auto;
 }
 
 #menu {
@@ -145,7 +149,7 @@ ul:first-child {
 /* classes */
 
 .mono {
-    font-family: sf-text, Helvetica, Arial, sans-serif;
+    font-family: sf-mono, monaco, courier, monospace;
 }
 
 .large {
