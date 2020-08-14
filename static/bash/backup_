@@ -1,13 +1,28 @@
 #!/bin/sh
 
-DATE=`date +%Y-%m-%d`
-DIR="/home/username/backup"
-SQL="$DIR/$DATE.sql"
-USER="username"
-PASS="password"
-DB_HOST="database host"
-DB_NAME="database name"
+# backup (local)
+#
+# dump .sql & sync media/* to ~/
+# add cron job on production server
+# errors to $LOG
 
-echo "\n$DATE"
-mysqldump -u $USER -p$PASS -h $DB_HOST $DB_NAME > $SQL
-rsync -azP /var/www/html/media/ $DIR/media
+DATE=`date +%Y-%m-%d`
+HOME_LOCAL="/home/username"
+WWW_LOCAL="/Library/Webserver/Documents/site"
+BACKUP_LOCAL="$HOME_LOCAL/backup"
+SQL="$BACKUP_LOCAL/$DATE.sql"
+LOG="$WWW_LOCAL/static/bash/log"
+DB_USER_LOCAL="username"
+DB_PASS_LOCAL="password"
+DB_HOST_LOCAL="database host"
+DB_NAME_LOCAL="database name"
+
+echo "\n$DATE" >>$LOG
+if [ ! -d "$BACKUP_LOCAL" ]; then
+    mkdir $BACKUP_LOCAL;
+    echo "$BACKUP_LOCAL created." 
+fi
+echo "\nStart mysqldump ..."
+mysqldump -u $DB_USER_LOCAL -p$DB_PASS_LOCAL -h $DB_HOST_LOCAL $DB_NAME_LOCAL > $SQL 2>>$LOG
+echo "\nStart rsync ..."
+rsync -azP $WWW_LOCAL/media/ $BACKUP_LOCAL/media 2>>$LOG
