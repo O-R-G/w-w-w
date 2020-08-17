@@ -169,8 +169,9 @@ blockquote {
 	height: 33vw;
 }
 
-.half-size {
-    width: 50%;
+.half {
+    display: inline-block;
+    width: 49%;
 }
 
 .centre {
