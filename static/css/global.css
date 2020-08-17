@@ -169,6 +169,10 @@ blockquote {
 	height: 33vw;
 }
 
+.half-size {
+    width: 50%;
+}
+
 .centre {
 	position: relative;
     top: 50%;
