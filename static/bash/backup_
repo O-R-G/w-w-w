@@ -8,8 +8,8 @@
 
 DATE=`date +%Y-%m-%d`
 HOME_LOCAL="/home/username"
-WWW_LOCAL="/Library/Webserver/Documents/site"
-BACKUP_LOCAL="$HOME_LOCAL/backup"
+WWW_LOCAL="/Library/Webserver/Documents/sitename"
+BACKUP_LOCAL="$HOME_LOCAL/backup/sitename"
 SQL="$BACKUP_LOCAL/$DATE.sql"
 LOG="$WWW_LOCAL/static/bash/log"
 DB_USER_LOCAL="username"
@@ -19,7 +19,7 @@ DB_NAME_LOCAL="database name"
 
 echo "\n$DATE" >>$LOG
 if [ ! -d "$BACKUP_LOCAL" ]; then
-    mkdir $BACKUP_LOCAL;
+    mkdir $BACKUP_LOCAL 2>>$LOG;
     echo "$BACKUP_LOCAL created." 
 fi
 echo "\nStart mysqldump ..."
