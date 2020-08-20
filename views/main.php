@@ -1,7 +1,6 @@
 <?
 $body = $item['body'];
 $resources = $item['notes'];
-
 $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
@@ -11,7 +10,7 @@ $body = preg_replace($find, $replace, $body);
 		<ul class="nav-level">
 			<li><?
 				if(!$uu->id) {
-                    echo $home . '<a href="/*">&thinsp;*&nbsp;</a>';
+                    echo $home . '<a href="/about">&thinsp;*&nbsp;</a>';
 				} else {
 				    ?><a href="/<?= $a_url; ?>"><?= $head; ?></a><?
 				}

@@ -114,8 +114,8 @@ blockquote {
 }
 
 #columns {
-    columns: 200px 2;
-    column-gap: 2em;
+    columns: 350px 6;
+    column-gap: 44px;
     padding: 1em;
 }
 
@@ -128,7 +128,7 @@ blockquote {
     border-top: 1px solid #000;
     margin-top: 33px;
     padding-top: 11px;
-    padding-bottom: 50%;
+    padding-bottom: 33vw;
 }
 
 #resources a::after {
