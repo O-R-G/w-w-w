@@ -2,6 +2,10 @@
 $body = $item['body'];
 $notes = $item['notes'];
 
+$find = '/<div><br><\/div>/';
+$replace = '';
+$body = preg_replace($find, $replace, $body); 
+
 ?><section id="main">
 	<div id="breadcrumbs">
 		<ul class="nav-level">

@@ -119,15 +119,9 @@ blockquote {
     padding: 1em;
 }
 
-/* use margin for paragraph spacing instead of <br> */
-/* therefore, hide even divs with only <br> from o-r-g */
-
+/* use margin instead of <br> */
 #columns div {
     margin-bottom: 22px;
-}
-
-#columns div:nth-child(even) {
-    display: none;
 }
 
 #notes {
