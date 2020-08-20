@@ -1,6 +1,6 @@
 <?
 $body = $item['body'];
-$notes = $item['notes'];
+$resources = $item['notes'];
 
 $find = '/<div><br><\/div>/';
 $replace = '';
@@ -23,12 +23,14 @@ $body = preg_replace($find, $replace, $body);
 	</div>
     <div id='content'>
         <div id='columns'><?
-            echo $body; 
-            ?><div id='notes' class='mono'>
-                Resources<br/><br/><?
-                echo $notes; 
-            ?></div>
-        </div>
+            echo $body;
+            if ($resources) {
+                ?><div id='resources' class='mono'>
+                    Resources<br/><br/><?
+                    echo $resources; 
+                ?></div><?
+            }
+        ?></div>
     </div>
 </section>
 

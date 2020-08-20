@@ -124,13 +124,14 @@ blockquote {
     margin-bottom: 22px;
 }
 
-#notes {
+#resources {
     border-top: 1px solid #000;
+    margin-top: 33px;
     padding-top: 11px;
     padding-bottom: 50%;
 }
 
-#notes a::after {
+#resources a::after {
     content: url('/media/svg/arrow-up-right-1-k.svg');
     padding: 2px;
 }
