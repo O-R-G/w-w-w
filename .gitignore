@@ -11,9 +11,10 @@
 *.jpeg
 *.png
 *.pdf
-*,svg
+*.svg
 *.tif
 *.tiff
+*.mp4
 
 # macos
 .DS_Store

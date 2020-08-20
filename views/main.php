@@ -33,14 +33,14 @@ $body = preg_replace($find, $replace, $body);
     </div>
 </section>
 
-<script type="text/javascript" src="/static/js/screenfull.js"></script>	
+<script type="text/javascript" src="/static/js/screenfull.min.js"></script>	
 <script>
-    var imgs = document.getElementsByTagName('img');
+    var imgs = document.querySelectorAll('img,video');
 	var i;
 	var index;
 	for (i = 0; i < imgs.length; i++) {
 		imgs[i].addEventListener('click', function () {
-			if (screenfull.enabled) {
+			if (screenfull.isEnabled) {
 				screenfull.toggle(this);
 			}
 			index = i;
