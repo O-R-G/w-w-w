@@ -70,6 +70,8 @@ ul:first-child {
 blockquote {
     font-family: sf-mono, monaco, courier, monospace;
     font-size: 15px;
+    margin-block-start: 22px;
+    margin-block-end: 22px;
 }
 
 /* ids */
@@ -115,6 +117,17 @@ blockquote {
     columns: 200px 2;
     column-gap: 2em;
     padding: 1em;
+}
+
+/* use margin for paragraph spacing instead of <br> */
+/* therefore, hide even divs with only <br> from o-r-g */
+
+#columns div {
+    margin-bottom: 22px;
+}
+
+#columns div:nth-child(even) {
+    display: none;
 }
 
 #notes {
