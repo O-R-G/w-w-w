@@ -125,10 +125,14 @@ blockquote {
 }
 
 #notes {
-    columns: 100px 2;
-    column-gap: 2em;
-    margin-top: 2em;
-    margin-bottom: 50%;
+    border-top: 1px solid #000;
+    padding-top: 11px;
+    padding-bottom: 50%;
+}
+
+#notes a::after {
+    content: url('/media/svg/arrow-up-right-1-k.svg');
+    padding: 2px;
 }
 
 #fullscreen:-webkit-full-screen,

@@ -24,7 +24,8 @@ $body = preg_replace($find, $replace, $body);
     <div id='content'>
         <div id='columns'><?
             echo $body; 
-            ?><div id='notes' class='mono'><?
+            ?><div id='notes' class='mono'>
+                Resources<br/><br/><?
                 echo $notes; 
             ?></div>
         </div>
