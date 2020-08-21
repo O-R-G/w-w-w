@@ -1,6 +1,10 @@
+
 <?
 $body = $item['body'];
+$deck = $item['deck'];
 $resources = $item['notes'];
+$url = $item['url'];
+$name .= ($url == "about") ? '' : ', ' . $deck;
 $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 

@@ -78,7 +78,11 @@ if($uu->id) {
 	    		    ?></a><?
 			    }
 			    else {
-    			    ?><span><? echo $n['o']['name1']; ?></span><?
+    			    ?><span><? 
+    				    echo $n['o']['name1'];
+                        if ($n['o']['url'] !== "about")
+    	    			    echo ', ' . $n['o']['deck'];
+                    ?></span><?
 			    }
 		    ?></li><?
 		    $prevd = $d;
