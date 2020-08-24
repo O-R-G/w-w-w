@@ -1,7 +1,7 @@
 <?
 $body = $item['body'];
 $deck = $item['deck'];
-$resources = $item['notes'];
+$notes = $item['notes'];
 $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
@@ -24,10 +24,9 @@ $body = preg_replace($find, $replace, $body);
     <div id='content'>
         <div id='columns'><?
             echo $body;
-            if ($resources) {
-                ?><div id='resources' class='mono'>
-                    Resources<br/><br/><?
-                    echo $resources; 
+            if ($notes) {
+                ?><div id='notes' class='mono'><?
+                    echo $notes;
                 ?></div><?
             }
         ?></div>
