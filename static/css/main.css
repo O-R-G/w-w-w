@@ -147,7 +147,7 @@ blockquote {
 #notes a:not([href$=".pdf"])::before {
     content: url('/media/svg/arrow-right-1-k.svg');
 }
-/*
+
 #fullscreen:-webkit-full-screen,
 #f:-webkit-full-screen,
 :-webkit-full-screen {
@@ -172,7 +172,6 @@ blockquote {
 	margin: auto;
   	filter: initial;
 }
-*/
 
 /* classes */
 
