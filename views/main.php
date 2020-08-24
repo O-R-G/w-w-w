@@ -1,7 +1,9 @@
 <?
-$body = $item['body'];
+$name = $item['name1'];
 $deck = $item['deck'];
+$body = $item['body'];
 $notes = $item['notes'];
+$date = $item['begin'];
 $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
@@ -24,8 +26,13 @@ $body = preg_replace($find, $replace, $body);
     <div id='content'>
         <div id='columns'><?
             echo $body;
-            if ($notes) {
+            if ($deck) {
                 ?><div id='notes' class='mono'><?
+                    echo date("F d, Y", strtotime($date));
+                    echo '<br/>';
+                    echo $deck;
+                    echo '<br/>';
+                    echo '<br/>';
                     echo $notes;
                 ?></div><?
             }
