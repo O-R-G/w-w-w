@@ -131,12 +131,17 @@ blockquote {
     padding-bottom: 33vw;
 }
 
+#notes div {
+    margin-bottom: 0px;
+}
+
 #notes a::before {
     padding-right: 11px;
 }
 
 #notes a[href$=".pdf"]::before {
-    content: url('/media/svg/arrow-up-right-1-k.svg');
+    /* content: url('/media/svg/arrow-up-right-1-k.svg'); */
+    content: url('/media/svg/pdf-1-k.svg');
 }
 
 #notes a:not([href$=".pdf"])::before {
