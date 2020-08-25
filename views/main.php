@@ -26,7 +26,7 @@ $body = preg_replace($find, $replace, $body);
     <div id='content'>
         <div id='columns'><?
             echo $body;
-            if ($deck) {
+            if ($date) {
                 ?><div id='notes' class='mono'><?
                     echo date("F j, Y", strtotime($date));
                     echo '<br/>';
