@@ -4,11 +4,11 @@
 
             // output meta records (no begin dates
             foreach($nav as $n) {
-                $notes = $n['o']['notes'];
+                $body = $n['o']['body'];
                 $date =  $n['o']['begin'];
                 if (!$date) {
                     ?><div id='notes' class='mono'><?
-                        echo $notes;
+                        echo $body;
                     ?></div><?
                 }
             }
