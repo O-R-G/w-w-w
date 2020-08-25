@@ -31,8 +31,7 @@ $body = preg_replace($find, $replace, $body);
                     echo date("F j, Y", strtotime($date));
                     echo '<br/>';
                     echo $deck;
-                    echo '<br/>';
-                    echo '<br/>';
+                    echo '<br/><br/>';
                     echo $notes;
                 ?></div><?
             }

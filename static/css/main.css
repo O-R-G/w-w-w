@@ -114,7 +114,7 @@ blockquote {
 }
 
 #columns {
-    columns: 350px 6;
+    columns: 400px 6;
     column-gap: 44px;
     padding: 1em;
 }
@@ -137,15 +137,20 @@ blockquote {
 
 #notes a::before {
     padding-right: 11px;
+    content: "";
+    display:inline-block;
+    height:20px;
+    width:20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
 }
 
 #notes a[href$=".pdf"]::before {
-    /* content: url('/media/svg/arrow-up-right-1-k.svg'); */
-    content: url('/media/svg/pdf-1-k.svg');
+    background-image: url('/media/svg/pdf-1-k.svg');
 }
 
 #notes a:not([href$=".pdf"])::before {
-    content: url('/media/svg/arrow-right-1-k.svg');
+    background-image: url('/media/svg/arrow-up-right-1-k.svg');
 }
 
 #fullscreen:-webkit-full-screen,
@@ -231,6 +236,22 @@ blockquote {
 .visible {
     display: block;
     /* visibility: visible; */
+}
+
+.make #columns {
+    columns: 200px 6;
+}
+
+.make #notes {
+    padding-bottom: 0px;
+}
+
+.pdf #columns {
+    columns: 100px 6;
+}
+
+.pdf #notes {
+    padding-bottom: 22px;
 }
 
 /* vertical iPad / horizontal iPhone */

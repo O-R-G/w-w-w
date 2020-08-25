@@ -25,7 +25,6 @@ if($uu->id) {
 	if(!$is_leaf && $internal)
 		$show_menu = true;
 }
-
 ?><!DOCTYPE html>
 <html>
 	<head>
@@ -38,7 +37,6 @@ if($uu->id) {
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
 	<body><?
-
 	    if(!$uu->id) {
     	    ?><header id="menu" class="hidden homepage"><?
 	    }
