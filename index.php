@@ -2,8 +2,8 @@
 $uri = explode('/', $_SERVER['REQUEST_URI']);
 
 require_once("views/head.php");
-if ($uri[1] == 'make')
-    require_once("views/make.php");
+if ($uri[1] == 'print')
+    require_once("views/print.php");
 else if ($uri[1] == 'pdf')
     require_once("views/pdf.php");
 else 
