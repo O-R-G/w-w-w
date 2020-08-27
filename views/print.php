@@ -33,7 +33,10 @@
     </div>
 </section>
 <script>
-    window.onload = function() { 
-        window.print(); 
-    } 
+    window.onload = function() {
+        var random_delay = Math.floor(Math.random() * 4000 - 1500) + 1500;
+        setTimeout(function(){
+            window.print(); 
+            }, random_delay);
+    }
 </script>
