@@ -24,7 +24,10 @@ if($uu->id) {
 	$internal = (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
 	if(!$is_leaf && $internal)
 		$show_menu = true;
-}
+} else  
+    if ($uri[1])  
+        $uu->id = -1; 
+
 ?><!DOCTYPE html>
 <html>
 	<head>
