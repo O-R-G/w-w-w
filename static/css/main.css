@@ -230,22 +230,48 @@ blockquote {
 
 .hidden {
     display: none;
-    /* visibility: hidden; */
 }
 
 .visible {
     display: block;
-    /* visibility: visible; */
+}
+
+.make blockquote {
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+.make blockquote:first-child { 
+    margin-top: 0px;
 }
 
 .make #columns {
-    columns: 200px 6;
+    columns: inherit;
+    width: 800px;
+    padding-right: 200px;
+}
+
+.make #about {
+    margin-top: -22px;
+    border-top: inherit;
+    padding-bottom: 0px;
+    page-break-after: always;
 }
 
 .make #notes {
+    margin-top: 0px;
     padding-bottom: 0px;
+    font-size: 11px;
+    line-height: 16px;
+    page-break-inside: avoid;
 }
 
+.make #notes a::before {
+    content: none;
+}
+    
 .pdf #columns {
     columns: 100px 6;
 }
