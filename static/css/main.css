@@ -76,11 +76,6 @@ blockquote {
 
 /* ids */
 
-#fullscreen {
-	/* width: auto; */
-	height: auto;
-}
-
 #menu {
 	padding-bottom: 1em;
 }
@@ -151,6 +146,11 @@ blockquote {
 
 #notes a:not([href$=".pdf"])::before {
     background-image: url('/media/svg/arrow-up-right-1-k.svg');
+}
+
+#fullscreen {
+	/* width: auto; */
+	height: auto;
 }
 
 #fullscreen:-webkit-full-screen,
