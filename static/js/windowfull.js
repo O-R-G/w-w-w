@@ -14,25 +14,38 @@
 
     var windowfull = {
         request: function (element) {
-            // add css class
-            // scroll.to()
+            var container = document.createElement('DIV');
+            container.id = 'fullwindow';
+            element.classList.toggle('fullwindow');
+            alert("** window full ! **" + element);
+            // scroll.to() ?
         },
         exit: function () {
-            // rm css class
+            //var container = document.getElementById('fullwindow');
+            // container.remove();
+            // element.classList.toggle('fullwindow');
+            alert("** window empty ! **" + element);
+            // scroll.to() ?
         },
         toggle: function (element) {
-            // return this.isFullscreen ? this.exit() : this.request(element);
-            alert("** window full ! **" + element);
+            // alert("** window full ! **" + element);
+            // this.request(element);
+            // return this.isFullwindow ? this.request(element) : this.exit();
+alert(this.isFullwindow);
+            return this.isFullwindow ? this.exit() : this.request(element);
         }
     };
 
     Object.defineProperties(windowfull, {
-        isFullscreen: {
+        isFullwindow: {
             get: function () {
                 // check if currently fullwindow
-                // (by presence of class?)
+                // (by presence of class?
+                // or presence of div)
+                // return true;
                 // return Boolean(document[fn.fullscreenElement]);
-                return true;
+                // return Boolean(!(document.getElementById('fullwindow')));
+                return Boolean(document.getElementById('fullwindow'));
             }
         }
     });
