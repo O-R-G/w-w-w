@@ -11,28 +11,22 @@
 
     var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
     var isCommonjs = typeof module !== 'undefined' && module.exports;
+    var fullwindow = document.getElementById('fullwindow')            
+    document.body.style.position = 'relative';  /* reqd ios overflow: hidden */
 
     var windowfull = {
         request: function (element) {
-            var container = document.createElement('DIV');
-            container.id = 'fullwindow';
+            document.body.style.overflow = 'hidden';
+            fullwindow.style.display = 'block';
             element.classList.toggle('fullwindow');
-            alert("** window full ! **" + element);
-            // scroll.to() ?
-        },
-        exit: function () {
-            //var container = document.getElementById('fullwindow');
-            // container.remove();
-            // element.classList.toggle('fullwindow');
-            alert("** window empty ! **" + element);
-            // scroll.to() ?
+            },
+        exit: function (element) {
+            document.body.style.overflow = 'initial';
+            fullwindow.style.display = 'none';
+            element.classList.toggle('fullwindow');
         },
         toggle: function (element) {
-            // alert("** window full ! **" + element);
-            // this.request(element);
-            // return this.isFullwindow ? this.request(element) : this.exit();
-alert(this.isFullwindow);
-            return this.isFullwindow ? this.exit() : this.request(element);
+            return this.isFullwindow ? this.exit(element) : this.request(element);
         }
     };
 
@@ -45,7 +39,8 @@ alert(this.isFullwindow);
                 // return true;
                 // return Boolean(document[fn.fullscreenElement]);
                 // return Boolean(!(document.getElementById('fullwindow')));
-                return Boolean(document.getElementById('fullwindow'));
+                // return Boolean(document.getElementById('fullwindow'));
+                return Boolean(fullwindow.style.display == 'block');
             }
         }
     });

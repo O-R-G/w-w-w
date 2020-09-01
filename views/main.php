@@ -8,7 +8,8 @@ $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
 
-?><section id="main">
+?><div id='fullwindow'></div>
+<section id="main">
 	<div id="breadcrumbs">
 		<ul class="nav-level">
 			<li><?
@@ -46,8 +47,7 @@ $body = preg_replace($find, $replace, $body);
 	var i;
 	var index;
 	for (i = 0; i < imgs.length; i++) {
-		// if (!screenfull.isEnabled) {
-		if (!screenfull.isEnabled) {
+		if (screenfull.isEnabled) {
     		imgs[i].addEventListener('click', function () {
                 screenfull.toggle(this);
     		}, false);
