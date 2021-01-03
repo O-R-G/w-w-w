@@ -20,6 +20,6 @@
 .DS_Store
 
 # bash 
-backup_
-sync_
+backup
+sync
 log
