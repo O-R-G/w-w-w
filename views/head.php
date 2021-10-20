@@ -74,8 +74,8 @@ if($uu->id) {
 			    if($n['o']['id'] != $uu->id) {
     			    ?><a href="<? echo $host.$n['url']; ?>"><?
 				    echo $n['o']['name1'];
-                    if ($n['o']['deck'])
-    				    echo ',,, ' . $n['o']['deck'];
+                    if ($n['o']['deck'] && !ctype_space($n['o']['deck']))
+    				    echo '------- ' . $n['o']['deck'];
 	    		    ?></a><?
 			    }
 			    else {
