@@ -8,7 +8,7 @@ badge.addEventListener('click', hide_show_menu);
 function hide_show_menu() {
     menu.classList.toggle("hidden");
     main.classList.toggle("hidden");
-    badge_start_stop();
+    badge_obj.badge_start_stop();
 }
 
 // stub
