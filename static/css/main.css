@@ -126,7 +126,7 @@ blockquote {
 #notes {
     border-top: 1px solid #000;
     margin-top: 33px;
-    padding-top: 11px;
+    padding-top: 10px;
     padding-bottom: 33vw;
 }
 
@@ -135,7 +135,7 @@ blockquote {
 }
 
 #notes a::before {
-    padding-right: 11px;
+    padding-right: 10px;
     content: "";
     display:inline-block;
     height:20px;
@@ -264,41 +264,77 @@ blockquote {
 }
 
 .make blockquote {
-    margin-inline-start: 0px;
+    margin-block-start: 15px;
+    margin-block-end: 15px;
+    margin-inline-start: 24px;
     margin-inline-end: 0px;
-    font-size: 11px;
-    line-height: 16px;
+    font-size: 10px;
+    line-height: 15px;
+    text-indent: initial;
 }
-
-.make blockquote:first-child { 
-    margin-top: 0px;
-}
-
+    
 .make #columns {
-    columns: inherit;
-    width: 800px;
-    padding-right: 200px;
+    columns: 2;
+    column-gap: 100px;
+    width: 750px;
 }
 
 .make #about {
-    margin-top: -22px;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
     border-top: inherit;
-    padding-bottom: 0px;
-    page-break-after: always;
+    padding-bottom: 0;
+    break-after: page;
+}
+
+.make #about blockquote {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-top: 0px;
+}
+
+.make #about #print-or-download {
+    display: none;
 }
 
 .make #notes {
-    margin-top: 0px;
-    padding-bottom: 0px;
-    font-size: 11px;
-    line-height: 16px;
-    page-break-inside: avoid;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+    font-size: 10px;
+    line-height: 15px;
+    break-inside: avoid;
 }
 
 .make #notes a::before {
     content: none;
 }
-    
+
+.make #body {
+	font-family: sf-text, Helvetica, Arial, sans-serif; 
+    font-size: 12px;
+    line-height: 15px;
+    text-indent: 24px;
+}
+
+.make #body div {
+    margin-bottom: 0px;
+}
+
+.make #body img {
+    display: inline-block;
+    margin-left: -24px;
+}
+
+.make #body div:first-of-type {
+    text-indent: 0;
+}
+
+.make .skip-column {
+    break-after: page;
+}
+
 .pdf #columns {
     columns: 100px 6;
 }
@@ -320,5 +356,13 @@ blockquote {
     #columns .break {
         break-after: initial;
         margin-bottom: -22px;
+    }
+}
+
+/* print (printing only works well in firefox) */
+@media print { 
+    #content.make,
+    .make #columns {
+        padding: 0px;
     }
 }

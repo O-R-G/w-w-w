@@ -29,7 +29,7 @@ if($uu->id) {
         $uu->id = -1; 
 
 ?><!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title><? echo $site; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
