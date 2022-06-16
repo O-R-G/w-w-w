@@ -8,7 +8,7 @@
 
 DATE=`date +%Y-%m-%d`
 HOME_LOCAL="/home/username"
-WWW_LOCAL="/Library/Webserver/Documents/sitename"
+WWW_LOCAL="/var/www/html"
 BACKUP_LOCAL="$HOME_LOCAL/backup/sitename"
 SQL="$BACKUP_LOCAL/$DATE.sql"
 LOG="$WWW_LOCAL/static/bash/log"
