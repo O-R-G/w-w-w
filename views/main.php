@@ -1,9 +1,9 @@
 <?
-$name = $item['name1'];
-$deck = $item['deck'];
-$body = $item['body'];
-$notes = $item['notes'];
-$date = $item['begin'];
+$name = isset($item['name1']) ? $item['name1'] : '';
+$deck = isset($item['deck']) ? trim($item['deck']) : '';
+$body = isset($item['body']) ? trim($item['body']) : '';
+$notes = isset($item['notes']) ? trim($item['notes']) : '';
+$date = isset($item['begin']) ? $item['begin'] : '';
 $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 

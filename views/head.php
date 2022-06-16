@@ -16,12 +16,12 @@ if($uu->id)
 	$item = $oo->get($uu->id);
 else
 	$item = $oo->get(0);
-$name = ltrim(strip_tags($item["name1"]), ".");
+$name = isset($item["name1"]) ? ltrim(strip_tags($item["name1"]), ".") : '';
 $nav = $oo->nav($uu->ids);
 $show_menu = false;
 if($uu->id) {
 	$is_leaf = empty($oo->children_ids($uu->id));
-	$internal = (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
+	$internal = isset($_SERVER['HTTP_REFERER']) && (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
 	if(!$is_leaf && $internal)
 		$show_menu = true;
 } else  
@@ -59,30 +59,33 @@ if($uu->id) {
                 }
 		    ?></li>
 		    <ul class="nav-level"><?
-	    $prevd = $nav[0]['depth'];
-	    foreach($nav as $n) {
-		    $d = $n['depth'];
-		    if($d > $prevd) {
-    		    ?><ul class="nav-level"><?
-		    }
-		    else {
-			    for($i = 0; $i < $prevd - $d; $i++) { 
-                    ?></ul><? 
-                }
-		    }
-		    ?><li><?
-			    if($n['o']['id'] != $uu->id) {
-    			    ?><a href="<? echo $host.$n['url']; ?>"><?
-				    echo $n['o']['name1'];
-                    if ($n['o']['deck'] && !ctype_space($n['o']['deck']))
-    				    echo ', ' . $n['o']['deck'];
-	    		    ?></a><?
+	    if(!empty($nav))
+	    {
+	    	$prevd = $nav[0]['depth'];
+		    foreach($nav as $n) {
+			    $d = $n['depth'];
+			    if($d > $prevd) {
+	    		    ?><ul class="nav-level"><?
 			    }
 			    else {
-    			    ?><span><?= $n['o']['name1']; ?></span><?
+				    for($i = 0; $i < $prevd - $d; $i++) { 
+	                    ?></ul><? 
+	                }
 			    }
-		    ?></li><?
-		    $prevd = $d;
+			    ?><li><?
+				    if($n['o']['id'] != $uu->id) {
+	    			    ?><a href="<? echo $host.$n['url']; ?>"><?
+					    echo $n['o']['name1'];
+	                    if ($n['o']['deck'] && !ctype_space($n['o']['deck']))
+	    				    echo ', ' . $n['o']['deck'];
+		    		    ?></a><?
+				    }
+				    else {
+	    			    ?><span><?= $n['o']['name1']; ?></span><?
+				    }
+			    ?></li><?
+			    $prevd = $d;
+		    }
 	    }
 	    ?></ul>
 	    </ul>
