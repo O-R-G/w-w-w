@@ -16,7 +16,8 @@ if($uu->id)
 	$item = $oo->get($uu->id);
 else
 	$item = $oo->get(0);
-$name = isset($item["name1"]) ? ltrim(strip_tags($item["name1"]), ".") : '';
+
+$name = isset($item) ? ltrim(strip_tags($item["name1"]), ".") : '';
 $nav = $oo->nav($uu->ids);
 $show_menu = false;
 if($uu->id) {
