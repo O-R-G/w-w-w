@@ -23,6 +23,6 @@ if [ ! -d "$BACKUP_LOCAL" ]; then
     echo "$BACKUP_LOCAL created." 
 fi
 echo "\nStart mysqldump ..."
-mysqldump -u $DB_USER_LOCAL -p$DB_PASS_LOCAL -h $DB_HOST_LOCAL $DB_NAME_LOCAL > $SQL 2>>$LOG
+mysqldump -u $DB_USER_LOCAL -p$DB_PASS_LOCAL -h $DB_HOST_LOCAL $DB_NAME_LOCAL --no-tablespaces > $SQL 2>>$LOG
 echo "\nStart rsync ..."
 rsync -azP $WWW_LOCAL/media/ $BACKUP_LOCAL/media 2>>$LOG
