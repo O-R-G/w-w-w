@@ -24,7 +24,7 @@ WWW_HOST_REMOTE="example.com"
 
 echo "\n$DATE" >>$LOG
 echo "\nStart mysqldump ..."
-mysqldump -u $DB_USER_REMOTE -p$DB_PASS_REMOTE -h $DB_HOST_REMOTE $DB_NAME_REMOTE --no-tablespaces > $SQL 2>>$LOG
+mysqldump -u $DB_USER_REMOTE -p$DB_PASS_REMOTE -h $DB_HOST_REMOTE $DB_NAME_REMOTE --no-tablespaces --column-statistics=0 > $SQL 2>>$LOG
 mysql -u $DB_USER_LOCAL -p$DB_PASS_LOCAL $DB_NAME_LOCAL < $SQL 2>>$LOG
 echo "\nStart rsync ..."
 rsync -azP $WWW_USER_REMOTE@$WWW_HOST_REMOTE:$WWW_REMOTE/media/ $WWW_LOCAL/media 2>>$LOG
