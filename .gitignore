@@ -17,6 +17,7 @@ media/*.tiff
 media/*.mp4
 media/*.mov
 media/*.webm
+media/*.webp
 
 # macos
 .DS_Store
