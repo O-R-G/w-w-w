@@ -17,11 +17,13 @@
     var windowfull = {
         request: function (element) {
             document.body.style.overflow = 'hidden';
+            document.body.style.backgroundColor = '#000';
             fullwindow.style.display = 'block';
             element.classList.toggle('fullwindow');
             },
         exit: function (element) {
             document.body.style.overflow = 'initial';
+            document.body.style.backgroundColor = 'initial';
             fullwindow.style.display = 'none';
             element.classList.toggle('fullwindow');
         },
