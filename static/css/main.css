@@ -323,8 +323,8 @@ blockquote {
 }
 
 .make #body img {
-    display: inline-block;
-    margin-left: -24px;
+    padding-left: 0em;
+    padding-right: 3em;
 }
 
 .make #body div:first-of-type {
