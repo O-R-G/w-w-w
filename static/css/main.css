@@ -274,8 +274,8 @@ blockquote {
 }
     
 .make #columns {
-    columns: 2;
-    column-gap: 100px;
+    columns: 3;
+    column-gap: 50px;
     width: 750px;
 }
 
@@ -284,7 +284,7 @@ blockquote {
     margin-inline-end: 0;
     border-top: inherit;
     padding-bottom: 0;
-    break-after: page;
+    /* break-after: page; */
 }
 
 .make #about blockquote {
@@ -323,8 +323,8 @@ blockquote {
 }
 
 .make #body img {
-    padding-left: 0em;
-    padding-right: 3em;
+    display: inline-block;
+    margin-left: -24px;
 }
 
 .make #body div:first-of-type {
@@ -332,12 +332,10 @@ blockquote {
 }
 
 .make .skip-column {
-    break-after: page;
-}
-
-.make #about a[href^="/print"], 
-.make #about a[href^="/read"] {
+    /* break-after: page; */
+    /* PoP */
     display: none;
+    /* end */
 }
 
 .pdf #columns {
@@ -364,7 +362,7 @@ blockquote {
     }
 }
 
-/* print (printing only works well in firefox) */
+/* print (currently printing works best in chrome) */
 @media print { 
     #content.make,
     .make #columns {
