@@ -44,19 +44,19 @@ if( isset($item) && $item['id'] !== 0 && count($oo->media($item['id'])) > 0 )
 ?><!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><? echo $site; ?></title>
-		<meta name="title" content="<? echo $site; ?>">
+		<title><? echo $site_title; ?></title>
+		<meta name="title" content="<? echo $site_title; ?>">
     	<meta name="description" content="<?php echo $description; ?>">
     	<!-- Open Graph / Facebook --> <!-- this is what Facebook and other social websites will draw on -->
 	    <meta property="og:type" content="website">
 	    <meta property="og:url" content="<?php echo $site_url; ?>">
-	    <meta property="og:title" content="<? echo $site; ?>">
+	    <meta property="og:title" content="<? echo $site_title; ?>">
 	    <meta property="og:description" content="<?php echo $description; ?>">
 	    <meta property="og:image" content="<?php echo $card_src; ?>">
 	    <!-- Twitter --> 
 	    <meta property="twitter:card" content="summary_large_image">
 	    <meta property="twitter:url" content="<?php echo $site_url; ?>">
-	    <meta property="twitter:title" content="<? echo $site; ?>">
+	    <meta property="twitter:title" content="<? echo $site_title; ?>">
 	    <meta property="twitter:description" content="<?php echo $description; ?>">
 	    <meta property="twitter:image" content="<?php echo $card_src; ?>">
 
