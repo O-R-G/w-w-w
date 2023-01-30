@@ -29,10 +29,37 @@ if($uu->id) {
     if ($uri[1])  
         $uu->id = -1; 
 
+$card_src = $card_default;
+if( isset($item) && $item['id'] !== 0 && count($oo->media($item['id'])) > 0 )
+{
+	foreach($oo->media($item['id']) as $m)
+	{
+		if($m['type'] == 'jpg' || $m['type'] == 'png' || $m['type'] == 'gif'){
+			$card_src = m_url($m);
+			break;
+		}
+	}
+}
+
 ?><!DOCTYPE html>
 <html lang="en">
 	<head>
 		<title><? echo $site; ?></title>
+		<meta name="title" content="<? echo $site; ?>">
+    	<meta name="description" content="<?php echo $description; ?>">
+    	<!-- Open Graph / Facebook --> <!-- this is what Facebook and other social websites will draw on -->
+	    <meta property="og:type" content="website">
+	    <meta property="og:url" content="<?php echo $site_url; ?>">
+	    <meta property="og:title" content="<? echo $site; ?>">
+	    <meta property="og:description" content="<?php echo $description; ?>">
+	    <meta property="og:image" content="<?php echo $card_src; ?>">
+	    <!-- Twitter --> 
+	    <meta property="twitter:card" content="summary_large_image">
+	    <meta property="twitter:url" content="<?php echo $site_url; ?>">
+	    <meta property="twitter:title" content="<? echo $site; ?>">
+	    <meta property="twitter:description" content="<?php echo $description; ?>">
+	    <meta property="twitter:image" content="<?php echo $card_src; ?>">
+
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="/static/css/main.css">
