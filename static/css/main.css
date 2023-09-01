@@ -368,4 +368,7 @@ blockquote {
     .make #columns {
         padding: 0px;
     }
+    img, video {
+        filter: none;
+    }
 }
