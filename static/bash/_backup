@@ -50,14 +50,8 @@ echo "\nChecking backup log size ..."
 LOG_SIZE=`du -sc $LOG | tail -n1 | cut -f1`
 if [ $LOG_SIZE -gt $LOG_SIZE_LIMIT ]; then
     echo "Backup log reaches maximum size. Start mv old log & touch a new one ..."
-    for FILE in $LOGS/$SITENAME.log.*
-      do echo $FILE
-    done
-    # rm "$(ls -t "$LOGS/$SITENAME.log".*)"
-    # SQL_SIZE=`du -sc "$BACKUP_LOCAL/"*.sql | tail -n1 | cut -f1`
-    # while [ $SQL_SIZE -gt $SQL_SIZE_LIMIT ]
-    # do
-    #     rm "$(ls -t "$BACKUP_LOCAL/"*.sql | tail -1)"
-    #     SQL_SIZE=`du -sc "$BACKUP_LOCAL/"*.sql | tail -n1 | cut -f1`
-    # done
+    NUM="$(find "$LOGS/" -name "$SITENAME.log*" | wc -l | tr -d '[:blank:]')"
+    echo $NUM
+    mv $LOG "$LOGS/$SITENAME.log.$NUM"
+    touch $LOG
 fi
