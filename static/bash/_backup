@@ -20,7 +20,7 @@ DB_PASS_LOCAL="password"
 DB_HOST_LOCAL="database host"
 DB_NAME_LOCAL="database name"
 SQL_SIZE_LIMIT=2097152 #1gb. the unit of du output is 512 bytes
-LOG_SIZE_LIMIT=2097
+LOG_SIZE_LIMIT=20971
 
 echo "\n$DATE" >>$LOG
 if [ ! -d "$BACKUP_LOCAL" ]; then
