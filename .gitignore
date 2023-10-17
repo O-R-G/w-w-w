@@ -23,9 +23,9 @@ media/*.webp
 .DS_Store
 
 # bash 
-static/bash/backup
-static/bash/sync
-static/bash/log
+static/bash/backup*
+static/bash/sync*
+static/bash/logs/*
 
 # php composer
 static/php/vendor

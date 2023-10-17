@@ -6,17 +6,21 @@
 # add cron job on production server
 # errors to $LOG
 
-DATE=`date +%Y-%m-%d`
+SITENAME="sitename"
 HOME_LOCAL="/home/username"
 WWW_LOCAL="/var/www/html"
-BACKUP_LOCAL="$HOME_LOCAL/backup/sitename"
+
+DATE=`date +%Y-%m-%d`
+BACKUP_LOCAL="$HOME_LOCAL/backup/$SITENAME"
 SQL="$BACKUP_LOCAL/$DATE.sql"
-LOG="$WWW_LOCAL/static/bash/log"
+LOGS="$WWW_LOCAL/static/bash/logs"
+LOG="$LOGS/$SITENAME.log"
 DB_USER_LOCAL="username"
 DB_PASS_LOCAL="password"
 DB_HOST_LOCAL="database host"
 DB_NAME_LOCAL="database name"
 SQL_SIZE_LIMIT=2097152 #1gb. the unit of du output is 512 bytes
+LOG_SIZE_LIMIT=2097
 
 echo "\n$DATE" >>$LOG
 if [ ! -d "$BACKUP_LOCAL" ]; then
@@ -40,4 +44,20 @@ if [ $SQL_SIZE -gt $SQL_SIZE_LIMIT ]; then
         rm "$(ls -t "$BACKUP_LOCAL/"*.sql | tail -1)"
         SQL_SIZE=`du -sc "$BACKUP_LOCAL/"*.sql | tail -n1 | cut -f1`
     done
+fi
+
+echo "\nChecking backup log size ..."
+LOG_SIZE=`du -sc $LOG | tail -n1 | cut -f1`
+if [ $LOG_SIZE -gt $LOG_SIZE_LIMIT ]; then
+    echo "Backup log reaches maximum size. Start mv old log & touch a new one ..."
+    for FILE in $LOGS/$SITENAME.log.*
+      do echo $FILE
+    done
+    # rm "$(ls -t "$LOGS/$SITENAME.log".*)"
+    # SQL_SIZE=`du -sc "$BACKUP_LOCAL/"*.sql | tail -n1 | cut -f1`
+    # while [ $SQL_SIZE -gt $SQL_SIZE_LIMIT ]
+    # do
+    #     rm "$(ls -t "$BACKUP_LOCAL/"*.sql | tail -1)"
+    #     SQL_SIZE=`du -sc "$BACKUP_LOCAL/"*.sql | tail -n1 | cut -f1`
+    # done
 fi
