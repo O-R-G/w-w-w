@@ -10,25 +10,27 @@ SITENAME="sitename"
 HOME_LOCAL="/home/username"
 WWW_LOCAL="/var/www/html"
 
-DATE=`date +%Y-%m-%d`
+DATE=`date +%Y-%m-%d` 
 BACKUP_LOCAL="$HOME_LOCAL/backup/$SITENAME"
 SQL="$BACKUP_LOCAL/$DATE.sql"
-LOGS="$WWW_LOCAL/static/bash/logs"
-LOG="$LOGS/$SITENAME.log"
+LOG="$WWW_LOCAL/static/bash/logs/$SITENAME.log"
 DB_USER_LOCAL="username"
 DB_PASS_LOCAL="password"
 DB_HOST_LOCAL="database host"
 DB_NAME_LOCAL="database name"
 
-echo "\n$DATE" >>$LOG
+echo "\n$DATE"
 if [ ! -d "$BACKUP_LOCAL" ]; then
-    mkdir $BACKUP_LOCAL 2>>$LOG;
-    mkdir $BACKUP_LOCAL/media 2>>$LOG;
-    mkdir $BACKUP_LOCAL/logs 2>>$LOG;
-    echo "$BACKUP_LOCAL created." 
+    mkdir $BACKUP_LOCAL
+fi
+if [ ! -d "$BACKUP_LOCAL/media" ]; then
+    mkdir $BACKUP_LOCAL/media
+fi
+if [ ! -d "$BACKUP_LOCAL/logs" ]; then
+    mkdir $BACKUP_LOCAL/logs
 fi
 
 echo "\nStart mysqldump ..."
-mysqldump -u $DB_USER_LOCAL -p$DB_PASS_LOCAL -h $DB_HOST_LOCAL $DB_NAME_LOCAL --no-tablespaces > $SQL 2>>$LOG
+mysqldump -u $DB_USER_LOCAL -p$DB_PASS_LOCAL -h $DB_HOST_LOCAL --no-tablespaces $DB_NAME_LOCAL > $SQL 2>>$LOG
 echo "\nStart rsync ..."
 rsync -azP $WWW_LOCAL/media/ $BACKUP_LOCAL/media 2>>$LOG
