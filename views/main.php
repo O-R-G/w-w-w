@@ -57,15 +57,13 @@ else
     var imgs = document.querySelectorAll('img,video');
 	var i;
 	var index;
-	for (i = 0; i < imgs.length; i++) {
-		if (screenfull.isEnabled) {
-    		imgs[i].addEventListener('click', function () {
-                screenfull.toggle(this);
-    		}, false);
-		} else {
-    		imgs[i].addEventListener('click', function () {
-                windowfull.toggle(this);
-    		}, false);
-        }
-	}
+	if (screenfull.isEnabled) {
+		for (i = 0; i < imgs.length; i++) {
+			imgs[i].addEventListener('click', function () {
+				screenfull.toggle(this);
+			}, false);
+		}
+	}	
+	else
+		windowfull.init(document.getElementById('fullwindow'));
 </script>
