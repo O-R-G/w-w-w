@@ -27,7 +27,7 @@ else
 				if(!$uu->id) {
                     echo $home . '<a href="/about">&thinsp;*&nbsp;</a>';
 				} else {
-				    ?><a href="/<?= $a_url; ?>"><?= $head; ?></a><?
+				    ?><a href="/"><?= $head; ?></a><?
 				}
 			?></li>
 			<ul class="nav-level">
