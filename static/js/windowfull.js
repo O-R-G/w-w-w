@@ -11,6 +11,8 @@
 
     var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
     var isCommonjs = typeof module !== 'undefined' && module.exports;
+    // var fullwindowImg = document.querySelector('#fullwindow img');
+    // var fullwindowCaption = document.querySelector('#fullwindow-caption');    
     document.body.style.position = 'relative';  /* reqd ios overflow: hidden */
     
     var windowfull = {
@@ -35,18 +37,18 @@
             this.addListeners();
         },
         renderElements: function(){
-            this.elements.container.innerHTML += '<img id="fullwindow-image" class="prevent-windowfull fullwindow">';
+            this.elements.container.innerHTML += '<div id="fullwindow-image-wrapper"><img id="fullwindow-image" class="prevent-windowfull fullwindow"></div>';
             if(this.isGallery) {
                 this.elements.container.innerHTML += '<div id="fullwindow-next-btn" class="fullwindow-control-btn"></div>';
                 this.elements.container.innerHTML += '<div id="fullwindow-prev-btn" class="fullwindow-control-btn"></div>';
             }
-            this.elements.container.innerHTML += '<div id="fullwindow-caption"></div>';
+            this.elements.container.innerHTML += '<div id="fullwindow-caption" class="small white"></div>';
             this.elements.container.innerHTML += '<div id="close-fullwindow-btn" class="fullwindow-control-btn cross-btn"><img src="/media/svg/x-6-w.svg"></div>';
             if(this.displayCaption)
                 this.elements.container.innerHTML += '<div id="fullwindow-caption-btn" class="fullwindow-control-btn"><img src="/media/svg/question-mark-circle-6-w.svg"></div>';
         },
         getElements: function(){
-            this.elements.img = document.querySelector('#fullwindow-image');
+            this.elements.img = document.querySelector('#fullwindow-image-wrapper img');
             this.elements.caption = document.querySelector('#fullwindow-caption');
             this.elements.closeBtn = document.querySelector('#close-fullwindow-btn');
             if(this.isGallery) {
