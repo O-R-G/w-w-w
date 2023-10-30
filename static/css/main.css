@@ -271,7 +271,9 @@ blockquote {
 .viewing-fullwindow #badge-container {
     display: none;
 }
-
+#fullwindow-caption.empty ~ #fullwindow-caption-btn {
+    display: none;;
+}
 /* classes */
 
 .mono {
