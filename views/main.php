@@ -20,6 +20,7 @@ else
 }
 
 ?><div id='fullwindow'></div>
+<div id='screenfull-container'></div>
 <section id="main">
 	<div id="breadcrumbs">
 		<ul class="nav-level">
@@ -52,18 +53,16 @@ else
 </section>
 
 <script type="text/javascript" src="/static/js/screenfull.min.js"></script>	
+<script type="text/javascript" src="/static/js/screenfull-extend.js"></script>	
 <script type="text/javascript" src="/static/js/windowfull.js"></script>	
 <script>
-    var imgs = document.querySelectorAll('img,video');
-	var i;
-	var index;
-	if (screenfull.isEnabled) {
-		for (i = 0; i < imgs.length; i++) {
-			imgs[i].addEventListener('click', function () {
-				screenfull.toggle(this);
-			}, false);
-		}
+	if (!screenfull.isEnabled) {
+		console.log('screenfull');
+		var imgs = document.querySelectorAll('img:not(.prevent-screenfull),video:not(.prevent-screenfull)');
+		screenfull.extInit(document.getElementById('screenfull-container'), document.querySelectorAll('img:not(.prevent-screenfull)'), true, false);
 	}	
-	else
-		windowfull.init(document.getElementById('fullwindow'));
+	else{
+		var imgs = document.querySelectorAll('img:not(.prevent-windowfull),video:not(.prevent-windowfull)');
+		windowfull.init(document.getElementById('fullwindow'), document.querySelectorAll('img:not(.prevent-windowfull)'), true, true);
+	}
 </script>

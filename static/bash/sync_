@@ -6,11 +6,13 @@
 # sync media/* from remote to local 
 # errors to $LOG
 
-DATE=`date +%Y-%m-%d`
+SITENAME="sitename"
 WWW_LOCAL="/Library/Webserver/Documents/site"
+
+DATE=`date +%Y-%m-%d`
 WWW_REMOTE="/var/www/html"
 SQL="$WWW_LOCAL/$DATE.sql"
-LOG="$WWW_LOCAL/static/bash/log"
+LOG="$WWW_LOCAL/static/bash/logs/$SITENAME.log"
 DB_USER_REMOTE="username"
 DB_PASS_REMOTE="password"
 DB_HOST_REMOTE="example.com"

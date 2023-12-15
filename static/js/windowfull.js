@@ -45,7 +45,7 @@
             this.elements.container.innerHTML += '<div id="fullwindow-caption" class="small white"></div>';
             this.elements.container.innerHTML += '<div id="close-fullwindow-btn" class="fullwindow-control-btn cross-btn"><img src="/media/svg/x-6-w.svg"></div>';
             if(this.displayCaption)
-                this.elements.container.innerHTML += '<div id="fullwindow-caption-btn" class="fullwindow-control-btn"><img src="/media/svg/question-mark-circle-6-w.svg"></div>';
+                this.elements.container.innerHTML += '<div id="fullwindow-caption-btn" class="fullwindow-control-btn">CAPTION</div>';
         },
         getElements: function(){
             this.elements.img = document.querySelector('#fullwindow-image-wrapper img');

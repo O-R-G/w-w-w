@@ -38,12 +38,12 @@ class Badge {
         this.centerY = this.canvas.height / 2;
 
         // debug
-        console.log('computed_width = ' + computed_width);
-        console.log('computed_height = ' + computed_height);
-        console.log('canvas.width = ' + this.canvas.width);
-        console.log('canvas.height = ' + this.canvas.height);
-        console.log('centerX = ' + this.centerX);
-        console.log('centerY = ' + this.centerY);
+        // console.log('computed_width = ' + computed_width);
+        // console.log('computed_height = ' + computed_height);
+        // console.log('canvas.width = ' + this.canvas.width);
+        // console.log('canvas.height = ' + this.canvas.height);
+        // console.log('centerX = ' + this.centerX);
+        // console.log('centerY = ' + this.centerY);
 
         this.context.fillStyle = "#FFFFFF";
         this.context.lineWidth = 8;
