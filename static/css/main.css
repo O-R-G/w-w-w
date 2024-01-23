@@ -504,7 +504,7 @@ blockquote {
 	font-family: sf-text, Helvetica, Arial, sans-serif; 
     font-size: 12px;
     line-height: 15px;
-    text-indent: 24px;
+    /* text-indent: 24px; */
 }
 
 .make #body div {
