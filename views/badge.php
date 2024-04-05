@@ -1,11 +1,10 @@
-<?
+<? 
 /*
     edit $badge per site
-    plus .js src above
+    plus .js src
 */
-?>
-<script type='text/javascript' src='/static/js/badge.js'></script>
-<?
+
+?><script type='text/javascript' src='/static/js/badge.js'></script><?
 
 $badge = "<canvas id='clock-canvas' class='centre'>loading...</canvas>";
 
@@ -15,7 +14,7 @@ if(!$uu->id) {
             <?= $badge; ?>
         </div>
     </div>
-    <script>badge_obj.badge_init("clock-canvas", "centre", true);</script><?
+    <script>badge.init("clock-canvas", "centre", true);</script><?
 } else {
     if($show_menu) {
         ?><div id="badge-container" class="lower-right">
@@ -30,13 +29,10 @@ if(!$uu->id) {
             </div>
         </div><?
     }
-    if($show_menu)
-    {
-    ?><script>badge_obj.badge_init("clock-canvas", "lower-right", false);</script><?
-    }
-    else
-    {
-    ?><script>badge_obj.badge_init("clock-canvas", "lower-right", true);</script><?
+    if($show_menu) {
+        ?><script>badge.init("clock-canvas", "lower-right", false);</script><?
+    } else {
+        ?><script>badge.init("clock-canvas", "lower-right", true);</script><?
     }
 }
 ?>
