@@ -12,10 +12,13 @@ $mm = new Media();
 $ww = new Wires();
 $uu = new URL();
 
-if($uu->id)
+if(isset($uu->id))
 	$item = $oo->get($uu->id);
-else
-	$item = $oo->get(0);
+else {
+    http_response_code(404);
+    echo 'nothing here.';
+    die();
+}
 
 $name = isset($item) ? ltrim(strip_tags($item["name1"]), ".") : '';
 $nav = $oo->nav($uu->ids);
