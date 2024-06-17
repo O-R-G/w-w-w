@@ -55,13 +55,15 @@ if( isset($item) && $item['id'] !== 0 && count($oo->media($item['id'])) > 0 )
 	    <meta property="og:url" content="<?php echo $site_url; ?>">
 	    <meta property="og:title" content="<? echo $site_title; ?>">
 	    <meta property="og:description" content="<?php echo $description; ?>">
-	    <meta property="og:image" content="<?php echo $card_src; ?>">
+	    <meta property="og:image" content="<?php echo $site_url . $card_src; ?>">
+		<meta property="og:locale" content="<?php echo $og_locale; ?>" />
+        <meta property="og:logo" content="<?= $site_url . $logo_src; ?>" />
 	    <!-- Twitter --> 
 	    <meta property="twitter:card" content="summary_large_image">
 	    <meta property="twitter:url" content="<?php echo $site_url; ?>">
 	    <meta property="twitter:title" content="<? echo $site_title; ?>">
 	    <meta property="twitter:description" content="<?php echo $description; ?>">
-	    <meta property="twitter:image" content="<?php echo $card_src; ?>">
+	    <meta property="twitter:image" content="<?php echo $site_url . $card_src; ?>">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
