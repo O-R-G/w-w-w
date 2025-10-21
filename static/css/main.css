@@ -216,15 +216,18 @@ blockquote {
 }
 .viewing-fullwindow #fullwindow {
     display: block;
+    pointer-events: auto;
+    touch-action: none;
 }
 body.viewing-fullwindow {
     background-color: #000;
+    pointer-events: none;
+    touch-action: none;
 }
 .viewing-fullwindow #main{
     opacity: 0;
     pointer-events: none;
-    height: 100dvh;
-    overflow: hidden;
+    touch-action: none;
 }
 #fullwindow-image
 {
