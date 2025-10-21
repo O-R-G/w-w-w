@@ -209,13 +209,22 @@ blockquote {
     margin: 0px;
     width: 100vw;
     max-width: 100%;
-    height: 100vh;
+    height: 100dvh;
     box-sizing: border-box;
     background-color: #000;
     z-index: +3;
 }
 .viewing-fullwindow #fullwindow {
     display: block;
+}
+body.viewing-fullwindow {
+    background-color: #000;
+}
+.viewing-fullwindow #main{
+    opacity: 0;
+    pointer-events: none;
+    height: 100dvh;
+    overflow: hidden;
 }
 #fullwindow-image
 {
@@ -248,7 +257,7 @@ blockquote {
 #fullwindow-prev-btn {
     position: absolute;
     top: 0;
-    height: 100vh;
+    height: 100dvh;
     width: 50%;
 }
 #fullwindow-next-btn {
@@ -284,7 +293,7 @@ blockquote {
     margin: 0px;
     width: 100vw;
     max-width: 100%;
-    height: 100vh;
+    height: 100dvh;
     box-sizing: border-box;
     background-color: #000;
     z-index: 2000;
@@ -362,7 +371,7 @@ blockquote {
 {
     position: absolute;
     top: 0;
-    height: 100vh;
+    height: 100dvh;
     width: 50%;
 }
 #screenfull-next-btn {

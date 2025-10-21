@@ -28,7 +28,7 @@ static/bash/backup*
 static/bash/sync*
 !static/bash/sync_
 static/bash/logs/*
-!static/bash/logs/sample.log
+!static/bash/logs/.gitkeep
 
 # php composer
 static/php/vendor
