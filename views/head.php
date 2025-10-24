@@ -68,6 +68,7 @@ if( isset($item) && $item['id'] !== 0 && count($oo->media($item['id'])) > 0 )
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="/static/css/main.css">
+		<link rel="stylesheet" href="/static/css/imagefull.css">
 		<link rel="stylesheet" href="/static/css/sf-text.css">
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
