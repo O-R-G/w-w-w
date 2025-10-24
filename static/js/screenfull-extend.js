@@ -86,19 +86,23 @@ class ScreenfullExtended {
 
         if (this.elements.closeBtn) {
             this.elements.closeBtn.addEventListener('click', () => {
-                this.screenfull.exit();
+                this.screenfull.extWxit();
             });
         }
-
         if (this.isGallery && this.elements.nextBtn && this.elements.prevBtn) {
             this.elements.nextBtn.addEventListener('click', () => this.next());
             this.elements.prevBtn.addEventListener('click', () => this.prev());
             window.addEventListener('keydown', (e) => {
                 if (!document.body.classList.contains('viewing-screenfull')) return;
-                if (e.keyCode == 39)
+                if (e.key == 'ArrowRight')
                     this.next();
-                else if (e.keyCode == 37)
+                else if (e.key == 'ArrowLeft')
                     this.prev();
+            });
+        }
+        if(!this.isGallery) {
+            this.container.addEventListener('click', ()=>{
+                this.extExit();
             });
         }
 
@@ -172,7 +176,6 @@ class ScreenfullExtended {
     }
 
     extExit() {
-        console.log('extExit');
         if (this.timer) clearTimeout(this.timer);
         document.body.classList.remove('viewing-screenfull-caption');
         document.body.classList.remove('viewing-screenfull');

@@ -24,12 +24,14 @@
             caption: null,
             triggers: []
         },
-        init: function(container, isGallery=false, displayCaption=false){
+        init: function(container, images=null, isGallery=false, displayCaption=false){
             if(!container) return;
+            console.log(isGallery);
             this.elements.container = container;
             this.isGallery = isGallery;
             this.displayCaption = displayCaption;
-            this.images = document.querySelectorAll('img:not(.prevent-windowfull)');
+            this.elements.container.dataset.isGallry = this.isGallery ? '1' : '0';
+            this.images = images ?? document.querySelectorAll('img:not(.prevent-windowfull):not(.prevent-screenfull)');
             for(let i = 0; i < this.images.length; i++) 
                 this.images[i].setAttribute('windowfull-index', i);
             this.renderElements();
@@ -37,21 +39,24 @@
             this.addListeners();
         },
         renderElements: function(){
-            this.elements.container.innerHTML += '<div id="fullwindow-image-wrapper"><img id="fullwindow-image" class="prevent-windowfull fullwindow"></div>';
+            let html = '<div id="fullwindow-image-wrapper"><img id="fullwindow-image" class="prevent-windowfull fullwindow"></div>';
             if(this.isGallery) {
-                this.elements.container.innerHTML += '<div id="fullwindow-next-btn" class="fullwindow-control-btn"></div>';
-                this.elements.container.innerHTML += '<div id="fullwindow-prev-btn" class="fullwindow-control-btn"></div>';
+                html += '<div id="fullwindow-next-btn" class="fullwindow-control-btn"></div>';
+                html += '<div id="fullwindow-prev-btn" class="fullwindow-control-btn"></div>';
+                html += '<div id="close-fullwindow-btn" class="fullwindow-control-btn cross-btn"><img src="/media/svg/x-6-w.svg"></div>';
             }
-            this.elements.container.innerHTML += '<div id="fullwindow-caption" class="small white"></div>';
-            this.elements.container.innerHTML += '<div id="close-fullwindow-btn" class="fullwindow-control-btn cross-btn"><img src="/media/svg/x-6-w.svg"></div>';
+            html += '<div id="fullwindow-caption" class="small white"></div>';
+            
             if(this.displayCaption)
-                this.elements.container.innerHTML += '<div id="fullwindow-caption-btn" class="fullwindow-control-btn">CAPTION</div>';
+                html += '<div id="fullwindow-caption-btn" class="fullwindow-control-btn">CAPTION</div>';
+            this.elements.container.innerHTML += html;
         },
         getElements: function(){
             this.elements.img = document.querySelector('#fullwindow-image-wrapper img');
             this.elements.caption = document.querySelector('#fullwindow-caption');
-            this.elements.closeBtn = document.querySelector('#close-fullwindow-btn');
+            
             if(this.isGallery) {
+                this.elements.closeBtn = document.querySelector('#close-fullwindow-btn');
                 this.elements.nextBtn = document.querySelector('#fullwindow-next-btn');
                 this.elements.prevBtn = document.querySelector('#fullwindow-prev-btn');
             }
@@ -78,7 +83,9 @@
                     else if(e.keyCode == 37)
                         this.prev();
                 }.bind(this));
-            }   
+            } else {
+                this.elements.container.addEventListener('click', ()=>this.exit());
+            }
             if(this.displayCaption) {
                 this.elements.captionBtn.addEventListener('click', function(){
                     document.body.classList.toggle('viewing-fullwindow-caption');
