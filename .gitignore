@@ -6,18 +6,7 @@
 *~
 
 # media
-media/*.gif
-media/*.jpg
-media/*.jpeg
-media/*.png
-media/*.pdf
-media/*.svg
-media/*.tif
-media/*.tiff
-media/*.mp4
-media/*.mov
-media/*.webm
-media/*.webp
+media/*.*
 
 # macos
 .DS_Store
