@@ -21,3 +21,5 @@ static/bash/logs/*
 
 # php composer
 static/php/vendor
+
+robots.txt
