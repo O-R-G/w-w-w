@@ -40,15 +40,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	const body_a = document.querySelectorAll('#main a');
 	for(const a of body_a){
 		const href = a.getAttribute('href');
-		if (!href) {
+		if (!href)
 			continue;
-		}
 		const url = new URL(href, window.location.href);
-		const isHttp = url.protocol === 'http:' || url.protocol === 'https:';
-		const isExternal = isHttp && url.hostname !== window.location.hostname;
-		if (isExternal) {
-			// a.dataset.external = 'true';
-			a.target = '_blank';
-		}
+		const isExternal = (url.origin !== location.origin);
+		if (isExternal)
+			a.target = '_new';
 	}
 });
