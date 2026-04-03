@@ -73,7 +73,8 @@ if( isset($item) && $item['id'] !== 0 && count($oo->media($item['id'])) > 0 )
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
-	<body><?
+	<body>
+		<?
 	    if(!$uu->id) {
     	    ?><header id="menu" class="hidden homepage"><?
 	    }

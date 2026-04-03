@@ -10,6 +10,7 @@ body.viewing-screenfull #menu,
 body.viewing-screenfull #badge-container,
 body.viewing-screenfull #logo-container,
 body.viewing-fullwindow #main,
+body.viewing-fullwindow main,
 body.viewing-fullwindow #menu,
 body.viewing-fullwindow #badge-container,
 body.viewing-fullwindow #logo-container {
@@ -65,6 +66,10 @@ body.viewing-fullwindow #logo-container {
 .viewing-fullwindow #fullwindow { 
     display: block;
 }
+#fullwindow[data-media-type="video"] #fullwindow-image,
+#fullwindow[data-media-type="image"] #fullwindow-video{
+    display: none;
+}
 #fullwindow img {
     padding: 0;
     filter: none;
@@ -84,7 +89,8 @@ body.viewing-fullwindow #logo-container {
     opacity: 0.5;
 }
 
-#fullwindow-image
+#fullwindow-image,
+#fullwindow-video
 {
     position: absolute;
     top: 0px;
@@ -155,14 +161,21 @@ body.viewing-fullwindow #logo-container {
     z-index: 2000;
 }
 
-#screenfull-image-wrapper {
+#screenfull-image-wrapper,
+#screenfull-video-wrapper {
     width: 100%;
     height: 100%;
+    display: none;
+}
+#screenfull-container[data-type="image"] #screenfull-image-wrapper, 
+#screenfull-container[data-type="video"] #screenfull-video-wrapper {
+    display: block;
 }
 .viewing-screenfull #screenfull-container {
     display: block;
 }
-#screenfull-image-wrapper img {
+#screenfull-image-wrapper img,
+#screenfull-video-wrapper video {
     display: block;
     width: 100%;
     height: 100%;

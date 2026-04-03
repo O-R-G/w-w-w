@@ -6,7 +6,7 @@
     see https://github.com/sindresorhus/screenfull.js/
 */
 class ScreenfullExtended {
-    constructor(screenfull, container, images = null, isGallery = false, displayCaption = false) {
+    constructor(screenfull, container, media = null, isGallery = false, displayCaption = false) {
         if(!screenfull || typeof screenfull === 'undefined' || !screenfull.isEnabled) {
             console.log('screenfull is not defined');
             return;
@@ -18,14 +18,14 @@ class ScreenfullExtended {
 
         this.screenfull = screenfull;
         this.container = container;
-        this.images = images ? images : document.querySelectorAll('img:not(.prevent-screenfull)');
-        if (!this.images.length) return;
+        this.media = media ? media : document.querySelectorAll('video:not(.prevent-screenfull), img:not(.prevent-screenfull)');
+        if (!this.media?.length) return;
 
         this.currentIndex = false;
         this.isGallery = isGallery;
         this.displayCaption = displayCaption;
         this.timer = null;
-        this.isMultiple = this.images.length !== 1;
+        this.isMultiple = this.media.length !== 1;
         this.elements = {
             container: container,
             img: null,
@@ -45,12 +45,12 @@ class ScreenfullExtended {
     }
 
     assignImageIndexes() {
-        for (let i = 0; i < this.images.length; i++) {
-            this.images[i].setAttribute('screenfull-index', i);
+        for (let i = 0; i < this.media.length; i++) {
+            this.media[i].setAttribute('screenfull-index', i);
         }
     }
     renderElements() {
-        this.elements.container.innerHTML += '<div id="screenfull-image-wrapper"><img id="screenfull-image" class="screenfull"></div>';
+        this.elements.container.innerHTML += '<div id="screenfull-image-wrapper"><img id="screenfull-image" class="screenfull"></div><div id="screenfull-video-wrapper"><video id="screenfull-video" class="screenfull"></video></div>';
         if (this.isGallery) {
             this.elements.container.innerHTML += '<div id="screenfull-next-btn" class="screenfull-control-btn no-select"></div>';
             this.elements.container.innerHTML += '<div id="screenfull-prev-btn" class="screenfull-control-btn no-select"></div>';
@@ -64,6 +64,7 @@ class ScreenfullExtended {
 
     getElements() {
         this.elements.img = document.querySelector('#screenfull-image-wrapper img');
+        this.elements.video = document.querySelector('#screenfull-video-wrapper video');
         this.elements.caption = document.querySelector('#screenfull-caption');
         this.elements.closeBtn = document.querySelector('#close-screenfull-btn');
         if (this.isGallery) {
@@ -75,13 +76,13 @@ class ScreenfullExtended {
     }
 
     addListeners() {
-        for (let i = 0; i < this.images.length; i++) {
-            const image = this.images[i];
-            image.classList.add('screenfull-trigger');
-            image.addEventListener('click', () => {
-                this.extRequest(image);
+        for (let i = 0; i < this.media.length; i++) {
+            const m = this.media[i];
+            m.classList.add('screenfull-trigger');
+            m.addEventListener('click', () => {
+                this.extRequest(m);
             });
-            this.elements.triggers.push(image);
+            this.elements.triggers.push(m);
         }
 
         if (this.elements.closeBtn) {
@@ -104,14 +105,18 @@ class ScreenfullExtended {
             this.container.addEventListener('click', ()=>{
                 this.extExit();
             });
+            
         }
 
         this.screenfull.on('change', () => {
-            console.log(screenfull.isFullscreen);
             if (!screenfull.isFullscreen) {
                 if (this.timer) clearTimeout(this.timer);
                 document.body.classList.remove('viewing-screenfull-caption');
                 document.body.classList.remove('viewing-screenfull');
+                if(this.container.dataset.type === 'video' && this.elements.video) {
+                    this.elements.video.pause();
+                    this.elements.video.currentTime = 0;
+                }
             }
             this.updateScreenfullState();
         });
@@ -127,13 +132,13 @@ class ScreenfullExtended {
     }
 
     next() {
-        if (!this.isMultiple && this.currentIndex === this.images.length - 1) {
+        if (!this.isMultiple && this.currentIndex === this.media.length - 1) {
             this.extExit();
             return;
         }
-        this.currentIndex = this.currentIndex === this.images.length - 1 ? 0 : this.currentIndex + 1;
+        this.currentIndex = this.currentIndex === this.media.length - 1 ? 0 : this.currentIndex + 1;
         this.updateBtnStates();
-        this.extRequest(this.images[this.currentIndex]);
+        this.extRequest(this.media[this.currentIndex]);
     }
 
     prev() {
@@ -141,22 +146,49 @@ class ScreenfullExtended {
             this.extExit();
             return;
         }
-        this.currentIndex = this.currentIndex === 0 ? this.images.length - 1 : this.currentIndex - 1;
+        this.currentIndex = this.currentIndex === 0 ? this.media.length - 1 : this.currentIndex - 1;
         this.updateBtnStates();
-        this.extRequest(this.images[this.currentIndex]);
+        this.extRequest(this.media[this.currentIndex]);
     }
 
     updateBtnStates() {
         if (!this.elements.prevBtn || !this.elements.nextBtn) return;
         if (this.currentIndex == 0) this.elements.prevBtn.classList.add('disabled');
         else this.elements.prevBtn.classList.remove('disabled');
-        if (this.currentIndex == this.images.length - 1) this.elements.nextBtn.classList.add('disabled');
+        if (this.currentIndex == this.media.length - 1) this.elements.nextBtn.classList.add('disabled');
         else this.elements.nextBtn.classList.remove('disabled');
     }
 
     extRequest(element) {
-        if (!element || element.tagName.toLowerCase() !== 'img' || !this.elements.img || !this.elements.caption) return;
-        this.elements.img.src = element.src;
+        // console.log('extRequest', element);
+        if (!element || (element.tagName.toLowerCase() !== 'img' && element.tagName.toLowerCase() !== 'video') || !this.elements.img || !this.elements.video || !this.elements.caption) return;
+        if (element.tagName.toLowerCase() === 'img') {
+            this.elements.img.src = element.dataset.screenfullSrc ? element.dataset.screenfullSrc : element.src;
+            this.container.dataset.type = 'image';
+        } else if (element.tagName.toLowerCase() === 'video') {
+            this.elements.video.src = element.dataset.screenfullSrc ? element.dataset.screenfullSrc : element.src;
+            this.container.dataset.type = 'video';
+            const video = this.elements.video;
+            if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+                console.log('already can play--');
+                video.play();
+                
+            } else {
+                video.addEventListener('canplay', () => {
+                    console.log('canplay--');
+                    video.play()
+                }, { once: true });
+            }
+            window.addEventListener('keydown', (e) => {
+                if (e.key == 'Space'){
+                    if(!video.paused) {
+                        video.pause();
+                    } else {
+                        video.play();
+                    }
+                }
+            });
+        }
         this.currentIndex = parseInt(element.getAttribute('screenfull-index'));
         if (this.displayCaption && this.elements.caption && this.elements.captionBtn) {
             if (element.getAttribute('caption')) {
@@ -179,6 +211,10 @@ class ScreenfullExtended {
         if (this.timer) clearTimeout(this.timer);
         document.body.classList.remove('viewing-screenfull-caption');
         document.body.classList.remove('viewing-screenfull');
+        if(this.container.dataset.type === 'video' && this.elements.video) {
+            this.elements.video.pause();
+            this.elements.video.currentTime = 0;
+        }
         this.screenfull.exit();
         this.updateScreenfullState();
     }
@@ -200,7 +236,7 @@ class ScreenfullExtended {
         this.screenfull.isGallery = this.isGallery;
         this.screenfull.displayCaption = this.displayCaption;
         this.screenfull.timer = this.timer;
-        this.screenfull.images = this.images;
+        this.screenfull.images = this.media;
         this.screenfull.isMultiple = this.isMultiple;
         this.screenfull.extInstance = this;
     }

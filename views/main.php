@@ -56,11 +56,16 @@ else
 <script type="text/javascript" src="/static/js/screenfull-extend.js"></script>	
 <script type="text/javascript" src="/static/js/windowfull.js"></script>	
 <script>
-	const images = document.querySelectorAll('img:not(.prevent-windowfull):not(.prevent-screenfull)');
-	if (screenfull.isEnabled) {
-		new ScreenfullExtended(screenfull, document.getElementById('screenfull-container'), images);
-	}	
-	else{
-		windowfull.init(document.getElementById('fullwindow'), images);
-	}
+	function addScreenfullListeners(){
+        const media = document.querySelectorAll('video:not(.prevent-windowfull):not(.prevent-screenfull), img:not(.prevent-windowfull):not(.prevent-screenfull)');
+        
+        if (screenfull.isEnabled) {
+            console.log('using screenfull');
+            new ScreenfullExtended(screenfull, document.getElementById('screenfull-container'), media);
+        } else {
+			console.log('using windowfull');
+			windowfull.init(document.getElementById('fullwindow'), media);
+        }
+    }
+	addScreenfullListeners();
 </script>
