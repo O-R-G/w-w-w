@@ -59,7 +59,7 @@ else
 	function addScreenfullListeners(){
         const media = document.querySelectorAll('video:not(.prevent-windowfull):not(.prevent-screenfull), img:not(.prevent-windowfull):not(.prevent-screenfull)');
         
-        if (screenfull.isEnabled && false) {
+        if (screenfull.isEnabled) {
             console.log('using screenfull');
             new ScreenfullExtended(screenfull, document.getElementById('screenfull-container'), media);
         } else {
