@@ -70,7 +70,8 @@ body.viewing-fullwindow #logo-container {
 #fullwindow[data-media-type="image"] #fullwindow-video{
     display: none;
 }
-#fullwindow img {
+#fullwindow img,
+#fullwindow video {
     padding: 0;
     filter: none;
 }
