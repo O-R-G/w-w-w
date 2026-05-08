@@ -43,7 +43,11 @@ if( isset($item) && $item['id'] !== 0 && count($oo->media($item['id'])) > 0 )
 		}
 	}
 }
-
+$schedule_dir = __DIR__ . '/../open-records-generator/schedule/';
+if(file_exists($schedule_dir . 'schedule.php')) {
+	require_once($schedule_dir . 'schedule-functions.php');
+	handleSchedule($schedule_dir . 'schedule.php');
+}
 ?><!DOCTYPE html>
 <html lang="en">
 	<head>
